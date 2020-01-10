@@ -25,17 +25,32 @@
     <fragment
         android:id="@+id/examFragment"
         android:name="com.example.myapplication.ui.exam.ExamFragment"
-        android:label="exam_fragment"
+        android:label="Learn"
         tools:layout="@layout/exam_fragment" />
     <fragment
         android:id="@+id/timeUpFragment"
         android:name="com.example.myapplication.ui.timeup.TimeUpFragment"
-        android:label="time_up_fragment"
+        android:label="Time Up"
         tools:layout="@layout/time_up_fragment" />
     <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.myapplication.ui.result.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/result_fragment" />
+    <fragment
         android:id="@+id/testFragment"
-        android:name="com.example.myapplication.ui.TestFragment"
-        android:label="test_fragment"
+        android:name="com.example.myapplication.ui.test.TestFragment"
+        android:label="Exam"
         tools:layout="@layout/test_fragment" />
+    <fragment
+        android:id="@+id/lv2Fragment"
+        android:name="com.example.myapplication.ui.test.Lv2Fragment"
+        android:label="Type II"
+        tools:layout="@layout/lv2_fragment" />
+    <fragment
+        android:id="@+id/kiemtralaiFragment"
+        android:name="com.example.myapplication.ui.notifications.KiemtralaiFragment"
+        android:label="Review"
+        tools:layout="@layout/kiemtralai_fragment" />
 
 </navigation>

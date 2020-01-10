@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.api.ApiInterface;
 import com.example.myapplication.api.ApiUntil;
+import com.example.myapplication.model.RecyclerBaseItem;
 import com.example.myapplication.model.Topic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,9 +27,8 @@ import retrofit2.Response;
 
 public class DashboardFragment extends Fragment {
     RecyclerView recyclerView;
-    Adapter adapter = new Adapter();
     private DashboardViewModel dashboardViewModel;
-
+    Myadapter myadapter = new Myadapter();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
@@ -38,23 +40,25 @@ public class DashboardFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        ApiInterface api = ApiUntil.getClient().create(ApiInterface.class);
+         ApiInterface api = ApiUntil.getClient().create(ApiInterface.class);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
-
+        recyclerView.setAdapter(myadapter);
         api.getTopic().enqueue(new Callback<List<Topic>>() {
 
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
-                List<Topic> topics = response.body();
-                int soprt = topics.size();
-                adapter.setTopic(topics);
-                adapter.notifyDataSetChanged();
+                List<RecyclerBaseItem> data  = new ArrayList<>();
+                List<Topic> topic = response.body();
+                for (Topic l : topic){
+                    data.add(l);
+                }
+                myadapter.setTopic(data);
+                myadapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
-                System.out.println(t);
+
             }
         });
 

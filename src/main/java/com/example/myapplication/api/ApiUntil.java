@@ -14,9 +14,8 @@ public class ApiUntil {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.8:8080/")
+                .baseUrl("http://172.20.10.8:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

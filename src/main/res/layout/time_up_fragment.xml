@@ -18,17 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:text="Level I" />
+        android:text="TYPE I" />
     <Button
         android:id="@+id/btn_lv2"
         android:layout_width="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
-        android:text="Level I" />
-    <Button
-        android:id="@+id/btn_lv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Level I" />
+        android:text="TYPE II" />
 
 </LinearLayout>

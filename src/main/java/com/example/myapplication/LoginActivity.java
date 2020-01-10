@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 TextInputEditText txt_acc;
 TextInputEditText txt_pass;
 Button btn_click;
+static int id_user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +33,17 @@ Button btn_click;
         btn_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApiInterface api = ApiUntil.getClient().create(ApiInterface.class);
+                final ApiInterface api = ApiUntil.getClient().create(ApiInterface.class);
                 User acc = new User();
                 acc.setUsername(txt_acc.getText().toString());
                 acc.setPassword(txt_pass.getText().toString());
-                api.login(acc).enqueue(new Callback<ApiRseponse<Boolean>>() {
+                api.login(acc).enqueue(new Callback<ApiRseponse<User>>() {
                     @Override
-                    public void onResponse(Call<ApiRseponse<Boolean>> call, Response<ApiRseponse<Boolean>> response) {
-                        if(response.body()!=null && response.body().data!=null && response.body().data==true)
+                    public void onResponse(Call<ApiRseponse<User>> call, Response<ApiRseponse<User>> response) {
+                        if(response.body()!=null && response.body().data!=null && response.body().data!=null)
                         {
+                            AppData.currentUser = response.body().data;
+
                             Intent intent = new Intent(LoginActivity.this, InterfaceActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
@@ -54,7 +57,7 @@ Button btn_click;
                     }
 
                     @Override
-                    public void onFailure(Call<ApiRseponse<Boolean>> call, Throwable t) {
+                    public void onFailure(Call<ApiRseponse<User>> call, Throwable t) {
                         Toast.makeText(LoginActivity.this, "Login thanh cong vloz", Toast.LENGTH_LONG).show();
 
                     }

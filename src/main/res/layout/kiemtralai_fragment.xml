@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.test.TestFragment">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.notifications.KiemtralaiFragment">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,26 +17,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txt_vn"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textFontWeight="@android:integer/config_longAnimTime"
-            ></TextView
->
+            ></TextView>
         <ImageView
-
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/txt_vn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/img_like"
-            app:srcCompat="@drawable/ic_star_black_24dp"
+            app:srcCompat="@drawable/ic_star_border_black_24dp"
             ></ImageView>
 
     </RelativeLayout>
-
-    <RelativeLayout
-
-        android:id="@+id/layout_img"
+    <TextView
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        android:gravity="center"
         android:layout_below="@+id/lay_1"
+        ></TextView>
+    <RelativeLayout
+        android:id="@+id/layout_img"
+        android:layout_below="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -53,41 +56,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_img"
         android:gravity="center"
-        android:id="@+id/lay_3"
+        android:id="@+id/lay_txt"
         >
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txt_word"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="40dp"
-            ></EditText>
+            ></TextView>
     </RelativeLayout>
     <RelativeLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lay_3"
+        android:layout_below="@+id/lay_txt"
+        android:gravity="center"
         >
         <Button
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_media"
-            android:background="@drawable/ic_volume_up_black_24dp"
+            android:text="Loa"
             android:layout_marginLeft="20dp"
 
             ></Button>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_xacnhan"
-            android:text="xac nhan"
+            android:id="@+id/btn_timeup"
+            android:text="timeup"
             android:layout_toRightOf="@+id/btn_media"
             android:layout_marginLeft="20dp"
 
             ></Button>
     </RelativeLayout>
-
-
 
 </RelativeLayout>
